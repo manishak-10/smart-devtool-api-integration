@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+const API_URL = import.meta.env.VITE_API_URL
 export default function History() {
   const [history, setHistory] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -13,8 +13,8 @@ export default function History() {
     const fetchHistory = async () => {
       try {
         const url = searchQuery 
-          ? `/api/history?search=${encodeURIComponent(searchQuery)}`
-          : '/api/history'
+          ? `${API_URL}/api/history?search=${encodeURIComponent(searchQuery)}`
+          : `${API_URL}/api/history`
         
         const response = await fetch(url)
         if (!response.ok) {
@@ -45,7 +45,7 @@ export default function History() {
     }
 
     try {
-      const response = await fetch(`/api/history/${id}`, {
+      const response = await fetch(`${API_URL}/api/history/${id}`, {
         method: 'DELETE'
       })
       

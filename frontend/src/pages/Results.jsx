@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
+const API_URL = import.meta.env.VITE_API_URL
 export default function Results() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ export default function Results() {
     const fetchResults = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch(`/api/history/${id}`)
+        const response = await fetchfetch(`${API_URL}/api/history/${id}`)
         if (!response.ok) {
           throw new Error('Analysis report not found')
         }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+const API_URL = import.meta.env.VITE_API_URL
 const DEMO_PRESETS = [
   {
     name: 'Stripe API Docs',
@@ -86,7 +86,7 @@ export default function Dashboard() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/analyze', {
+      const response = await fetch(`${API_URL}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: activeUrl, intended_use_case: intendedUseCase, programming_language: programmingLanguage })
