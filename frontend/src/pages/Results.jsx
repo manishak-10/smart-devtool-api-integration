@@ -26,7 +26,7 @@ export default function Results() {
     const fetchResults = async () => {
       setIsLoading(true)
       try {
-        const response = await fetchfetch(`${API_URL}/api/history/${id}`)
+        const response = await fetch(`${API_URL}/api/history/${id}`)
         if (!response.ok) {
           throw new Error('Analysis report not found')
         }
